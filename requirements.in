@@ -10,3 +10,4 @@ isort
 bandit
 pip-audit
 pydantic
+python-dotenv
