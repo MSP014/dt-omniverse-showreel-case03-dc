@@ -9,3 +9,4 @@ black
 isort
 bandit
 pip-audit
+pydantic
