@@ -13,25 +13,25 @@ repos:
     hooks:
       - id: black
         name: black
-        entry: black
+        entry: C:/Users/SpeLL/anaconda3/envs/case03-env/python.exe -m black
         language: system
         types: [python]
 
       - id: isort
         name: isort
-        entry: isort
+        entry: C:/Users/SpeLL/anaconda3/envs/case03-env/python.exe -m isort
         language: system
         types: [python]
 
       - id: flake8
         name: flake8
-        entry: flake8
+        entry: C:/Users/SpeLL/anaconda3/envs/case03-env/python.exe -m flake8
         language: system
         types: [python]
 
       - id: bandit
         name: bandit
-        entry: bandit
+        entry: C:/Users/SpeLL/anaconda3/envs/case03-env/python.exe -m bandit
         language: system
         types: [python]
         args: ["-r", "src", "tools"]
@@ -40,7 +40,7 @@ repos:
       # Dependency Consistency Check (ADR 003 Protection)
       - id: pip-compile-check
         name: pip-compile-check
-        entry: pip-compile --no-header --quiet --dry-run requirements.in
+        entry: C:/Users/SpeLL/anaconda3/envs/case03-env/python.exe -m piptools compile --no-header --quiet --dry-run requirements.in
         language: system
         files: ^requirements\.(in|txt)$
         pass_filenames: false
@@ -49,16 +49,15 @@ repos:
       # Dependency Vulnerability Scanning
       - id: pip-audit
         name: pip-audit
-        entry: pip-audit
+        entry: C:/Users/SpeLL/anaconda3/envs/case03-env/python.exe -m pip_audit -r requirements.txt --desc=off --progress-spinner=off
         language: system
-        types: [python]
-        args: ["-r", "requirements.txt"]
         pass_filenames: false
+        always_run: true
 
       # Tests
       - id: pytest
         name: pytest
-        entry: pytest
+        entry: C:/Users/SpeLL/anaconda3/envs/case03-env/python.exe -m pytest
         language: system
         pass_filenames: false
         always_run: true
