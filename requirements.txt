@@ -1,8 +1,8 @@
 annotated-types==0.7.0
     # via pydantic
-bandit==1.7.5
+bandit==1.9.3
     # via -r requirements.in
-black==24.3.0
+black==26.1.0
     # via -r requirements.in
 boolean-py==5.0
     # via license-expression
@@ -28,7 +28,7 @@ colorama==0.4.6
     #   build
     #   click
     #   pytest
-cyclonedx-python-lib==4.2.3
+cyclonedx-python-lib==11.6.0
     # via pip-audit
 defusedxml==0.7.1
     # via py-serializable
@@ -40,21 +40,15 @@ filelock==3.20.3
     # via
     #   cachecontrol
     #   virtualenv
-flake8==6.1.0
+flake8==7.3.0
     # via -r requirements.in
-gitdb==4.0.12
-    # via gitpython
-gitpython==3.1.46
-    # via bandit
-html5lib==1.1
-    # via pip-audit
 identify==2.6.16
     # via pre-commit
 idna==3.11
     # via requests
 iniconfig==2.3.0
     # via pytest
-isort==5.12.0
+isort==7.0.0
     # via -r requirements.in
 license-expression==30.4.4
     # via cyclonedx-python-lib
@@ -84,7 +78,7 @@ pathspec==1.0.3
     # via black
 pip-api==0.0.34
     # via pip-audit
-pip-audit==2.6.1
+pip-audit==2.10.0
     # via -r requirements.in
 pip-requirements-parser==32.0.1
     # via pip-audit
@@ -93,33 +87,38 @@ pip-tools==7.5.2
 platformdirs==4.5.1
     # via
     #   black
+    #   pip-audit
     #   virtualenv
 pluggy==1.6.0
     # via pytest
-pre-commit==3.5.0
+pre-commit==4.5.1
     # via -r requirements.in
-py-serializable==0.11.1
+py-serializable==2.1.0
     # via cyclonedx-python-lib
-pycodestyle==2.11.1
+pycodestyle==2.14.0
     # via flake8
 pydantic==2.12.5
     # via -r requirements.in
 pydantic-core==2.41.5
     # via pydantic
-pyflakes==3.1.0
+pyflakes==3.4.0
     # via flake8
 pygments==2.19.2
-    # via rich
+    # via
+    #   pytest
+    #   rich
 pyparsing==3.3.2
     # via pip-requirements-parser
 pyproject-hooks==1.2.0
     # via
     #   build
     #   pip-tools
-pytest==7.4.2
+pytest==9.0.2
     # via -r requirements.in
 python-dotenv==1.2.1
     # via -r requirements.in
+pytokens==0.4.0
+    # via black
 pyyaml==6.0.3
     # via
     #   bandit
@@ -132,25 +131,23 @@ rich==14.2.0
     # via
     #   bandit
     #   pip-audit
-six==1.17.0
-    # via html5lib
-smmap==5.0.2
-    # via gitdb
 sortedcontainers==2.4.0
     # via cyclonedx-python-lib
 stevedore==5.6.0
     # via bandit
-toml==0.10.2
-    # via pip-audit
 tomli==2.4.0
     # via
     #   black
     #   build
+    #   pip-audit
     #   pip-tools
     #   pytest
+tomli-w==1.2.0
+    # via pip-audit
 typing-extensions==4.15.0
     # via
     #   black
+    #   cyclonedx-python-lib
     #   exceptiongroup
     #   pydantic
     #   pydantic-core
@@ -162,8 +159,6 @@ urllib3==2.6.3
     # via requests
 virtualenv==20.36.1
     # via pre-commit
-webencodings==0.5.1
-    # via html5lib
 wheel==0.46.3
     # via pip-tools
 
