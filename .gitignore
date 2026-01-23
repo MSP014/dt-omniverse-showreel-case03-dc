@@ -1,23 +1,24 @@
-# Case 03 - Data Center .gitignore
-# STRICT POLICY: No heavy assets or binaries in the repo.
+# NVIDIA Showreel - Unified .gitignore
+# Estate Manager: Higgins
 
-# --- AI Assistant Protocols (Private) ---
+# --- AI Protocol (Local Only) ---
 protocols/
 
-# --- Directories ---
+# --- Heavy Work Directories (Project Structure) ---
 assets/
 cache/
 Refs/
 _incoming/
 geo/
+HIP/
 OUT/
 
-# --- Source/Project Files (Heavy/Binary) ---
+# --- Source/Project Files (Software Specific) ---
 AE/
 PRJ/
 AI/
 
-# --- Media/Renders ---
+# --- Media & Renders (Heavy) ---
 EXR/
 MP4/
 GIF/
@@ -25,27 +26,41 @@ MOV/
 PNG/
 
 # --- File Extensions (Specific Blocklist) ---
-# USD (Text USD is allowed for composition, but heavy crates are blocked)
-*.usdc
+# USD (Heavy Binary Crates blocked, ASCII allowed if strictly needed, but guarding general USD)
 *.usd
+*.usdc
+*.usdz
 
 # Houdini
 *.hip
 *.hipnc
 *.hiplc
 *.bgeo
-*.sc
+*.bgeo.sc
+*.vdb
+*.abc
 
-# Adobe
+# Adobe / Image
 *.aep
 *.prproj
 *.psd
+*.ai
+*.exr
+*.hdr
 
-# Python / System
+# --- Python ---
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 .env
+.venv
+env/
+venv/
+.pytest_cache/
+
+# --- Tools & System ---
+.idea/
+.vscode/
+*.code-workspace
 .DS_Store
 Thumbs.db
-.__atomic-write*
-*.code-workspace

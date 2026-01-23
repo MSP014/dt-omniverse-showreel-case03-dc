@@ -6,11 +6,11 @@ Accepted
 
 ## Context
 
-"Works on my machine" is unacceptable for a Digital Twin that claims to be an engineering tool. We need to respect the integrity of the Data Center simulation code.
+For an Infrastructure Digital Twin (Data Center), data fidelity is paramount. We need to respect the integrity of the simulation code and prevent leakage of server configurations or DB access strings.
 
 ## Decision
 
-We enforce a strict "Shift Left" strategy using `pre-commit` hooks:
+We enforce a strict "Shift Left" strategy using `pre-commit` hooks and automated guardrails:
 
 ### 1. Guardrails (Pre-commit)
 
@@ -23,9 +23,15 @@ We enforce a strict "Shift Left" strategy using `pre-commit` hooks:
 ### 2. Testing
 
 * `pytest` must pass locally before push.
-* **Data Validation:** Tests should verify that generated JSON data matches the expected schema for the MDL sensors.
+* **Data Validation:** Tests MUST verify that generated JSON thermal data matches the expected schema for the MDL sensors.
+* **Note:** Tests are covered by Linters (Black/Flake8) but excluded from Bandit security scans to avoid false positives related to `assert` usage.
+
+### 3. Secrets Management
+
+* **Isolation**: All sensitive data (DB credentials, sensor API keys) MUST be stored in a `.env` file.
+* **Sanity**: The `.env` file MUST be included in `.gitignore`. Never commit secrets to version control.
 
 ## Consequences
 
-* **Positive:** Higher code quality, reduced security risk.
+* **Positive:** Higher code quality, reduced security risk, blocked accidental large files.
 * **Negative:** Initial setup friction; `pip-audit` requires maintenance of `requirements.txt`.

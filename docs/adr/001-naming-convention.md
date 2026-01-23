@@ -1,4 +1,4 @@
-# ADR 001: Naming Convention
+# ADR 001: Naming Convention & Standards
 
 ## Status
 
@@ -6,17 +6,17 @@ Accepted
 
 ## Context
 
-Inconsistent naming across files and repositories leads to pipeline friction and "where is that file?" fatigue. For Case 03 (Data Center), understanding which file is geometry and which is a "sensor reading" is critical.
+For an Infrastructure Digital Twin (Data Center), clear distinction between static geometry and dynamic sensor data is critical. We need a standardised grammar to manage zones, racks, and units across composition layers.
 
 ## Decision
 
-We will enforce the following naming rules:
+We will enforce the following naming and operational rules:
 
 ### 1. Repository Naming
 
 Format: `dt-omniverse-showreel-case##-[key]`
 
-* **This Repo:** `dt-omniverse-showreel-case03-dc`
+* **Example:** `dt-omniverse-showreel-case03-dc` (this repo)
 * **dt**: Digital Twin
 * **omniverse**: Platform
 * **showreel**: Project type
@@ -25,24 +25,28 @@ Format: `dt-omniverse-showreel-case##-[key]`
 
 ### 2. File Layers (Snake Case)
 
-* `mesh_*` (Geometry - Static Racks/Servers)
-* `mat_*` (Materials - MDL shaders)
+* `mesh_*` (Geometry, e.g., `mesh_rack_A01`)
+* `mat_*` (Materials / MDL)
 * `light_*` (Lighting setups)
-* `sim_*` (Simulation Data - Heatmap values, Fan curves)
-* `sensor_*` (Data bindings or Logic schemas)
+* `sim_*` (Simulation caches / thermal data)
+* `sensor_*` (Data bindings or logic schemas)
 
 ### 3. USD Suffixes
 
-* `.usda`: ASCII (Human readable, git-friendly). Use for **logic**, **composition arcs** and **root layers**.
-* `.usdc`: Binary (Performance). Use for heavy **geometry** and **caches**. **GITIGNORE this extension.**
+* `.usda`: ASCII (Human-readable, git-friendly). Use for composition arcs and root layers.
+* `.usdc`: Binary (Performance). Use for heavy geometry and high-frequency caches. **GITIGNORE this extension.**
 
-### 4. Hierarchy Naming (Specific to Data Center)
+### 4. Language Standards
 
-* `Zone_[A-Z]` (e.g., `Zone_A`)
-* `Rack_[0-99]` (e.g., `Rack_12`)
-* `Unit_[0-42]` (e.g., `Unit_10` for standard server units)
+* **Documentation**: All technical documentation and comments MUST be in **British English** (en-GB). Use `s` instead of `z` (e.g., *optimise*, *standardise*).
+* **Commit Messages**: British English, imperative mood (e.g., "Add feature", not "Added feature").
+
+### 5. Git Workflow
+
+* **Branches**: `feature/description-of-change` or `fix/issue-id`.
+* **Tags**: Use semantic versioning for milestones (e.g., `v1.0.0-gold`).
 
 ## Consequences
 
-* **Positive:** Clear distinction between "dumb" geometry and "smart" data layers.
-* **Negative:** Requires strict discipline when generating procedural assets in Houdini to match these names.
+* **Positive:** Predictable file system, clear separation of binary vs text data, and consistent international documentation code.
+* **Negative:** Requires initial setup discipline and cognitive load for suffix management.
