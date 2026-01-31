@@ -29,9 +29,9 @@ The digital twin visualises a **"Viral Inference Surge"** — a sudden spike in 
 
 *This setup demonstrates an **L1 Digital Twin**, focusing on the visualization of critical infrastructure parameters (Thermal, Power, Network).*
 
-- **Hero Asset**: **Blackwell Rig v1.0** (4U custom nodes featuring SilverStone RM44 chassis and 4x RTX PRO 4500 Blackwell GPUs).
+- **Hero Asset**: **Blackwell Rig v1.0** (4U custom nodes featuring SilverStone RM44 chassis and 3x RTX PRO 4500 Blackwell GPUs).
 - **Houdini "Refinery"**: Procedural rack generation and cascading airflow/thermal simulation prep.
-- **USD Architecture**: Point Instancing strategy rendering **640 GPUs** across 16 racks in real-time.
+- **USD Architecture**: Point Instancing strategy rendering **480 GPUs** across 16 racks in real-time.
 - **MDL Visualization**: Custom shaders driving heatmaps and RDMA data-flow "pulses" directly from USD attributes.
 
 ## 👁️ Visual Proof
