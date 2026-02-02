@@ -1,10 +1,12 @@
 # NVIDIA Showreel - Unified .gitignore
 
-# --- Internal Protocols ---
+# --- Internal Protocols (STRICT PRIVACY) ---
 protocols/
 
 # --- Heavy Work Directories (Project Structure) ---
-assets/
+assets/_external/*
+!assets/**/.gitkeep
+
 cache/
 Refs/
 _incoming/
@@ -13,9 +15,10 @@ HIP/
 OUT/
 
 # --- Source/Project Files (Adobe and other software specific) ---
-AE/
-PRJ/
-AI/
+AE/   # After Effects
+AI/   # Adobe Illustrator
+PRJ/  # Premiere Pro
+PSD/  # Photoshop Projects
 
 # --- Media & Renders (Heavy) ---
 EXR/

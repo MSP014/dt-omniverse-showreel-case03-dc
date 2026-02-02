@@ -2,22 +2,26 @@
 
 ## Status
 
-Proposed
+Accepted
 
 ## Context
 
-In the Data Center Digital Twin (Case 03), thermal simulation data and high-res server assets represent a significant data volume. To maintain a lightweight repository, we must separate the architecture (Git) from the heavy binary payload (External).
+We deal with heavy texture atlases (EXR/PNG sequences) and USD caches that are unsuitable for Git storage. We need a reliable way to "hydrate" the repository with these heavy assets while protecting our internal procedural source code (`.hip` flows).
 
 ## Decision
 
 We will implement a **Hydration Protocol** to reconstruct the operational environment:
 
-1. **External Storage**: All non-textual assets (USD crates, .hip source files, textures) will be hosted on high-availability external storage.
-2. **Directory Mapping**: The external archive structure must mirror the local directory skeleton (`/assets`, `/geo`, `/cache`, `/HIP`).
-3. **Relative Path Integrity**: Every USD reference and Python script path MUST use relative paths. Absolute paths (e.g., `C:/Users/...`) are strictly forbidden to ensure machine-agnostic portability.
-4. **Automatic Provisioning (Future)**: A `bootstrap.py` utility in `/tools` will be developed to automate directory creation and asset synchronisation.
+1. **Structure**: The repository contains a pre-built skeleton at `assets/_external/` (anchored by `.gitkeep` files).
+    * `assets/_external/usd/`
+    * `assets/_external/tex/`
+    * `assets/_external/hdri/`
+2. **External Storage**: Runtime assets (USD, Textures) are hosted on external storage (One Drive / S3).
+3. **Prohibited Items**: Proprietary source files (Houdini `.hip`, Nuke Scripts) are **EXCLUDED** from public distribution. They are for internal use only.
+4. **Hydration**: The user downloads the Asset Pack and extracts it directly into the existing `assets/_external/` directory.
+5. **Relative Path Integrity**: Every USD reference and Python script path MUST use relative paths (e.g., `../assets/_external/usd/asset.usd`). Absolute paths are strictly forbidden.
 
 ## Consequences
 
-* **Positive**: Fast repository cloning, professional handling of heavy binary data, and guaranteed portability for the showreel presentation.
-* **Negative**: Requires an additional manual or scripted "hydration" step after cloning.
+* **Positive:** "It Just Works" experience for the user (no manual mkdir), strict IP protection for source files.
+* **Negative:** User must download a large ZIP file before the scene works.

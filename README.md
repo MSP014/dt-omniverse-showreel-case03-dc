@@ -52,6 +52,12 @@ This project follows a **README-driven structure** to manage the complexity of h
 
 ```text
 .
+├── assets/
+│   ├── _external/   # [DOWNLOADED] Runtime Assets (USD, Textures, HDRI) - Git Ignored
+│   │   ├── usd/
+│   │   ├── tex/
+│   │   └── hdri/
+│   └── local/       # Lightweight assets tracked by Git
 ├── docs/        # ADRs and knowledge base
 │   ├── plans/   # Implementation plans & tech debt
 ├── src/         # Core logic and scripts
@@ -65,17 +71,34 @@ This project follows a **README-driven structure** to manage the complexity of h
 
 ## 💾 Project Data / Assets
 
-To keep this repository lightweight (GitHub < 1GB), heavy binary assets are stored externally.
+### 🏭 The "Factory" Narrative
+>
+> This repository follows a strict **"Source vs. Artifact"** philosophy:
+>
+> - **Houdini (Fabricator):** The procedural "factory" where assets are generated. Source files (`.hip`) are proprietary and **excluded** from this repository.
+> - **USD (Artifact):** The "product" of the factory. These are the optimized files needed to run the Digital Twin in Omniverse.
+> - **Synthetic Data:** Telemetry streams are emulated via Python generators to simulate robust edge cases (e.g., extreme thermal loads) that are rarely captured in real-world data.
 
-- [**Download Heavy Assets (One Drive / S3 Link TBD)**](https://example.com/placeholder)
-  - Includes: `*.usd` crates, `*.hip` source files, and high-res textures.
+### 📦 Asset Hydration
+
+To keep this repository lightweight, heavy binary assets (USD Crates, Textures, HDRIs) are stored externally.
+
+- [**Download Asset Pack (One Drive / S3 Link TBD)**](https://example.com/placeholder)
+
+**Hydration Steps:**
+
+1. Download the ZIP archive from the link above.
+2. **Extract contents** directly into the `assets/_external/` folder.
+    - *Note: This folder already exists (anchored by `.gitkeep`), so you simply unzip into it.*
+    - *Result:* Your local path should look like `assets/_external/usd/my_asset.usd`.
 
 ## 🛠️ Setup & Installation
 
 1. **Clone:** `git clone https://github.com/MSP014/dt-omniverse-showreel-case03-dc.git`
-2. **Env:** Create conda env: `conda create -n case03-env python=3.10`
-3. **Deps:** `pip install -r requirements.txt`
-4. **Hooks:** `pre-commit install`
+2. **Hydration:** (See "Asset Hydration" above) - Extract assets to `assets/_external/`.
+3. **Env:** Create conda env: `conda create -n case03-env python=3.10`
+4. **Deps:** `pip install -r requirements.txt`
+5. **Hooks:** `pre-commit install`
 
 ---
 
