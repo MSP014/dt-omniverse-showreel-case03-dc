@@ -16,7 +16,7 @@ We will enforce the following naming and operational rules:
 
 Format: `dt-omniverse-showreel-case##-[key]`
 
-* **Example:** `dt-omniverse-showreel-case03-dc` (this repo)
+* **Example:** `dt-openusd-showcase-case03-dc` (this repo)
 * **dt**: Digital Twin
 * **omniverse**: Platform
 * **showreel**: Project type
